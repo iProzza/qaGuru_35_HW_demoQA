@@ -1,12 +1,12 @@
 package qaguru;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class DemoQaTests {
@@ -17,7 +17,6 @@ public class DemoQaTests {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = false;
-        Configuration.timeout = 5000; // default 4000
     }
 
 
@@ -25,24 +24,29 @@ public class DemoQaTests {
     void demoQaFillFormTest() {
         open("/automation-practice-form");
 
-        $x("//input[@id='firstName']").setValue("Anatoly");
-        $x("//input[@id='lastName']").setValue("Toorbeena");
-        $x("//input[@id='userEmail']").setValue("toorboAnatoly@mail.ru");
-        $x("//label[@title=''][contains(text(), 'Male')]").click();
-        $x("//input[@id='userNumber']").setValue("89678467411");
-        $x("//input[@id='dateOfBirthInput']").click();
-        $x("//div[contains(@class, 'react-datepicker__day--today')]").click();
-        $x("//input[@id= 'subjectsInput']").setValue("e");
-        $x("//div[contains(@id, 'subjectsContainer')]").setValue("e");//Это выпадашка вообще, паузой надо искать локатор
-        $(".subjects-auto-complete__menu").$("div").click(); // клик по первому элементу выпадаш
-        $x("//label[@title=''][contains(text(), 'Sports\n')]").click();
-//        $("#submit").click();
-//
-//         $("#submit").click();
-//         $("#output #name").shouldHave(text("Anatoly Toorbeena"));
-//         $("#output #email").shouldHave(text("toorboAnatoly@mail.ru"));
-    }
+        executeJavaScript("$('footer').remove();");
+        executeJavaScript("$('#fixedban').remove();");
 
+        open("/automation-practice-form");
+
+        $("#firstName").setValue("Anatoly");
+        $("#lastName").setValue("Toorbeena");
+        $("#userEmail").setValue("Toorbeena@mail.ru");
+        $("#genterWrapper").$(byText("Male")).click();
+        $("#userNumber").setValue("9811254534");
+
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").selectOption("October");
+        $(".react-datepicker__year-select").selectOption("1987");
+        $$("div.react-datepicker__day").findBy(text("4")).click();
+
+        $("#subjectsInput").setValue("Chemistry").pressEnter();
+        $("label[for=hobbies-checkbox-2]").click();
+
+        $("#uploadPicture").uploadFromClasspath("download_picture.jpg"); // Загрузка картинки
+
+
+    }
 
     @AfterAll
     static void afterAll() {
