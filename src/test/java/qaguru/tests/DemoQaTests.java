@@ -1,23 +1,34 @@
 package qaguru.tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import qaguru.pages.RegistrationPage;
 import qaguru.pages.components.SubmittingFormComponent;
 
+import java.util.Locale;
+
 
 public class DemoQaTests extends TestBase {
 
-    String firstName = "Aganez";
-    String lastName = "Toorbeena";
-    String email = "Toorbeena@mail.ru";
-    String gender = "Male";
-    String mobile = "9811254534";
-    String birthDay = "04";
-    String birthMonth = "October";
-    String birthYear = "1987";
-    String subject = "Chemistry";
-    String address = "PenzaCity";
+    Faker faker = new Faker(new Locale("en-GB"));
+
+    String firstName = faker.name().firstName();
+    String lastName = faker.name().lastName();
+    String email = faker.internet().emailAddress();
+    String gender = faker.options().option("Male", "Female");
+    String mobile = faker.phoneNumber().subscriberNumber(10);
+    String birthDay = String.format("%02d", faker.number().numberBetween(1, 28));
+    String birthMonth = faker.options().option(
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+    );
+    String birthYear = String.valueOf(faker.number().numberBetween(1950, 2000));
+    String subject = faker.options().option(
+            "Chemistry", "Maths", "Physics", "Arts", "English",
+            "Biology", "History", "Economics", "Computer Science", "Commerce", "Accounting"
+    );
+    String address = faker.address().streetAddress();
     String state = "Rajasthan";
     String city = "Jaiselmer";
 
