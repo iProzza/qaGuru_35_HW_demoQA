@@ -51,4 +51,21 @@ public class RandomTestDataGenerator {
     public static String getRandomAddress() {
         return faker.address().fullAddress();
     }
+
+    public static String getRandomState() {
+        return faker.options().option(
+                "NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+    }
+
+    public static String getRandomCity(String state) {
+        return switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> throw new IllegalArgumentException(
+                    "Ниизвестное значение state: " + state);
+        };
+    }
+
 }

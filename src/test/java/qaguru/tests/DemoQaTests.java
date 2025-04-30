@@ -20,8 +20,8 @@ public class DemoQaTests extends TestBase {
     String birthYear = getRandomBirthYear();
     String subject = getRandomSubject();
     String address = getRandomAddress();
-    String state = "Rajasthan";
-    String city = "Jaiselmer";
+    String state = getRandomState();
+    String city = getRandomCity(state);
 
     RegistrationPage practiceFormPage = new RegistrationPage();
     SubmittingFormComponent submittingFormComponent = new SubmittingFormComponent();
