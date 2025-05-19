@@ -1,6 +1,7 @@
 package qaguru.tests;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import qaguru.pages.RegistrationPage;
 import qaguru.pages.components.SubmittingFormComponent;
@@ -27,6 +28,7 @@ public class DemoQaTests extends TestBase {
     SubmittingFormComponent submittingFormComponent = new SubmittingFormComponent();
 
     @Test
+    @Tag("demoqa")
     @DisplayName("Успешная отправка формы со всеми заполненными полями")
     void demoQaFillFormTest() {
 
@@ -60,6 +62,7 @@ public class DemoQaTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     @DisplayName("Успешная отправка формы только с обязательными полями")
     void demoQaFillFormWithMinimumDataTest() {
 
@@ -78,6 +81,7 @@ public class DemoQaTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     @DisplayName("Негативная проверка: попытка отправки без имени")
     void demoQaFillFormWithOutFirstNameTest() {
         practiceFormPage.openPage()
