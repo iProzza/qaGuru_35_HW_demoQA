@@ -18,7 +18,7 @@ public class TestBase {
 
         String selenoidHost = System.getProperty("SELENOID_HOST", "selenoid.autotests.cloud");
         String browser = System.getProperty("browser", "chrome");
-        String browserVersion = System.getProperty("browserVersion", "100.0");
+        String browserVersion = System.getProperty("browserVersion", "127.0");
         String screenResolution = System.getProperty("screenResolution", "1920x1080");
 
         WebDriverManager.chromedriver()
