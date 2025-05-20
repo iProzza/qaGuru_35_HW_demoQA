@@ -17,6 +17,8 @@ public class TestBase {
     static void setUp() {
 
         String selenoidHost = System.getProperty("SELENOID_HOST", "selenoid.autotests.cloud");
+        String selenoidLogin = System.getProperty("SELENOID_LOGIN", "user1");
+        String selenoidPassword = System.getProperty("SELENOID_PASSWORD", "1234");
         String browser = System.getProperty("BROWSER", "chrome");
         String browserVersion = System.getProperty("BROWSER_VERSION", "127.0");
         String screenResolution = System.getProperty("SCREEN_RESOLUTION", "1920x1080");
@@ -32,7 +34,9 @@ public class TestBase {
         Configuration.browserVersion = browserVersion;
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
-        Configuration.remote = String.format("https://user1:1234@%s/wd/hub",
+        Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
+                selenoidLogin,
+                selenoidPassword,
                 selenoidHost);
 
 
