@@ -16,7 +16,7 @@ public class TestBase {
     @BeforeAll
     static void setUp() {
 
-        String selenoidHost = System.getProperty("SELENOID_HOST");
+        String selenoidHost = System.getProperty("SELENOID_HOST", "selenoid.autotests.cloud");
         String browser = System.getProperty("browser", "chrome");
         String browserVersion = System.getProperty("browserVersion", "100.0");
         String screenResolution = System.getProperty("screenResolution", "1920x1080");
