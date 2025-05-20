@@ -16,12 +16,12 @@ public class TestBase {
     @BeforeAll
     static void setUp() {
 
-        String selenoidHost = System.getProperty("SELENOID_HOST", "selenoid.autotests.cloud");
-        String selenoidLogin = System.getProperty("SELENOID_LOGIN", "user1");
-        String selenoidPassword = System.getProperty("SELENOID_PASSWORD", "1234");
-        String browser = System.getProperty("BROWSER", "chrome");
-        String browserVersion = System.getProperty("BROWSER_VERSION", "127.0");
-        String screenResolution = System.getProperty("SCREEN_RESOLUTION", "1920x1080");
+        String selenoidHost = System.getProperty("selenoid_host", "selenoid.autotests.cloud");
+        String selenoidLogin = System.getProperty("selenoid_login", "user1");
+        String selenoidPassword = System.getProperty("selenoid_password", "1234");
+        String browser = System.getProperty("browser", "chrome");
+        String browserVersion = System.getProperty("browserVersion", "127.0");
+        String screenResolution = System.getProperty("screenResolution", "1920x1080");
 
         WebDriverManager.chromedriver()
                 .clearDriverCache()
