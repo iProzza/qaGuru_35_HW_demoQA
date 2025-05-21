@@ -91,18 +91,18 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(String state) {
-        selectStateDdl.click();
+        selectStateDdl.scrollIntoView(true).click();
         dropdownOptions.findBy(text(state)).click();
         return this;
     }
 
     public RegistrationPage setCity(String city) {
-        selectCityDdl.click();
+        selectCityDdl.scrollIntoView(true).click();
         dropdownOptions.findBy(text(city)).click();
         return this;
     }
 
     public void clickSubmitBtn() {
-        submitBtn.click();
+        submitBtn.scrollIntoView(true).click();
     }
 }
